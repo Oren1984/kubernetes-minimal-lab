@@ -1,3 +1,6 @@
+# Namespace manifest for scoping the minimal lab resources
+# Keeps resources organized under a dedicated namespace
+
 apiVersion: v1
 kind: Namespace
 metadata:
