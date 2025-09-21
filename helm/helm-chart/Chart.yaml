@@ -1,3 +1,6 @@
+# Helm Chart metadata for Kubernetes minimal lab
+# Defines chart name, description, version, and app version
+
 apiVersion: v2
 name: kubernetes-minimal
 description: A minimal Helm chart for a Flask web app
