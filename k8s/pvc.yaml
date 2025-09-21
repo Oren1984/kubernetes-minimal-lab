@@ -1,3 +1,6 @@
+# PersistentVolumeClaim manifest for storage in the minimal lab
+# Requests storage resources from the cluster
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
