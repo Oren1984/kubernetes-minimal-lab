@@ -1,3 +1,5 @@
+# Simple Flask application for the Kubernetes minimal lab
+
 from flask import Flask
 import os
 
