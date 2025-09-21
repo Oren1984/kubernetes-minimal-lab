@@ -1,3 +1,6 @@
+# Kubernetes Deployment manifest for the minimal lab Flask app
+# Defines pods and replica settings
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
