@@ -1,3 +1,6 @@
+# Dockerfile to build a minimal demo service for the Kubernetes lab
+# Installs dependencies and starts a basic HTTP server/app
+
 FROM python:3.12-slim
 WORKDIR /app
 COPY requirements.txt .
