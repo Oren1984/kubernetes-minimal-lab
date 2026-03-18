@@ -28,66 +28,83 @@ cd app
 docker build -t <YOUR_DOCKERHUB_USERNAME>/k8s-minimal:1.0.0 .
 docker login
 docker push <YOUR_DOCKERHUB_USERNAME>/k8s-minimal:1.0.0
+```
 
 Deploy with plain YAML:
 
+```bash
 kubectl apply -f k8s/namespace.yaml
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
+```
 
 Deploy with Helm:
 
+```bash
 helm upgrade --install k8s-minimal ./helm/helm-chart \
   --namespace k8s-minimal --create-namespace
+```
 
 ---
 
 ## Usage
 
-Before deploying, update the image name in:
+### Before deploying, update the image name in:
 
-k8s/deployment.yaml
+- k8s/deployment.yaml
 
-helm/helm-chart/values.yaml
+- helm/helm-chart/values.yaml
 
-Test locally with port-forward:
+### Test locally with port-forward:
 
+```bash
 kubectl -n k8s-minimal port-forward deploy/web 8080:8080
 curl http://localhost:8080/
+```
 
-If port 8080 is already in use:
+### If port 8080 is already in use:
 
+```bash
 kubectl -n k8s-minimal port-forward deploy/web 8081:8080
 curl http://localhost:8081/
+```
 
-Optional ingress with Helm:
+### Optional ingress with Helm:
 
+```bash
 helm upgrade --install k8s-minimal ./helm/helm-chart \
   --namespace k8s-minimal --create-namespace \
   --set ingress.enabled=true \
   --set ingress.host=k8s-minimal.local
+```
 
 ---
 
-## leanup
+## Cleanup
 
 Delete YAML resources:
 
+```bash
 kubectl delete -f k8s --ignore-not-found=true
+```
 
 Remove Helm release:
 
+```bash
 helm uninstall k8s-minimal -n k8s-minimal || true
 kubectl delete ns k8s-minimal --ignore-not-found=true
+```
 
 ---
 
 ## Notes
 
-Built for learning and demo purposes
+- Built for learning and demo purposes
 
-Supports both plain manifests and Helm
+- Supports both plain manifests and Helm
 
-Ingress and PVC are optional
+- Ingress and PVC are optional
 
-Keep ArgoCD as a separate project to preserve scope
+- Keep ArgoCD as a separate project to preserve scope
+
+---
